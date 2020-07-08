@@ -6,3 +6,8 @@ Simple weather application using https://openweathermap.org/api
 
 The project itself also contains 3 different implementations for the counter button example in different architectures. The libraries and project was build in 2018 so the
 architecture and code might be obsolete.
+
+
+![Scheme](assets/weather_app.gif)
+
+![Scheme](assets/night_background.png)
