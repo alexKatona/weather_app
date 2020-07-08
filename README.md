@@ -10,4 +10,4 @@ architecture and code might be obsolete.
 
 ![Scheme](images/weather_app.gif)
 
-![Scheme](images/night_background.png)
+![Scheme](images/night_background.png){:height="10%" width="10%"}
