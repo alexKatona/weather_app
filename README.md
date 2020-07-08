@@ -10,4 +10,4 @@ architecture and code might be obsolete.
 
 ![Scheme](images/weather_app.gif)
 
-![](images/night_background.png =100x100)
+![](images/night_background.png)
