@@ -8,6 +8,6 @@ The project itself also contains 3 different implementations for the counter but
 architecture and code might be obsolete.
 
 
-![Scheme](images/weather_app.gif)
+![](images/weather_app.gif)
 
 ![](images/night_background.png)
