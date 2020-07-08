@@ -1,0 +1,40 @@
+name: weather_app
+description: Weather app
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_redux: ^0.5.2
+  redux: ^3.0.0
+  flutter_stream_friends: 0.8.0
+  rxdart: 0.18.1
+  redux_epics: ^0.10.2
+  http: 0.11.3+17
+  material_design_icons_flutter: ^2.7.94
+  flutter_launcher_icons: ^0.6.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/launcher_icons/launcher.png"
+  image_path_android: "assets/launcher_icons/launcher.png"
+  image_path_ios: "assets/launcher_icons/launcher.png"
+  adaptive_icon_background: "#FFFFFFFF"
+  adaptive_icon_foreground: "assets/launcher_icons/launcher.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

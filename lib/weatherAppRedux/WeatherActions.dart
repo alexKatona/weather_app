@@ -1,0 +1,3 @@
+class UpdateWeatherAction {}
+
+class LoadForecastAction {}
