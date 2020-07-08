@@ -10,4 +10,5 @@ architecture and code might be obsolete.
 
 ![Scheme](images/weather_app.gif)
 
-![Scheme](images/night_background.png){:height="10%" width="10%"}
+![Scheme]()
+<img src="images/night_background.png" width="200">
