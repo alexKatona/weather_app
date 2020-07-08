@@ -17,7 +17,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 class AnimationsEpicReduxWidget extends StatelessWidget {
-  /// missing DI, sad solution => should be reworked somehow
+  /// missing DI, horrible solution => should be reworked if there will be a proper solution/lib
   final Store store =
       AnimationsEpicReduxReducer(AnimationsEpicReduxMws(AnimationsEpicReduxLogic(WeatherApi())).createAnimationsEpicReduxMws())
           .createAnimationsEpicReduxStore();

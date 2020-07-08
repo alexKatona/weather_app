@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:redux/redux.dart';
 import 'package:weather_app/weatherAppRedux/WeatherActions.dart';
 import 'package:weather_app/weatherAppRedux/WeatherLogic.dart';
 import 'package:weather_app/weatherAppRedux/WeatherViewState.dart';
-import 'package:redux/redux.dart';
 
 class AnimationsEpicReduxMws {
   final AnimationsEpicReduxLogic animationsEpicReduxLogic;
@@ -11,20 +11,28 @@ class AnimationsEpicReduxMws {
 
   List<Middleware<AnimationEpicReduxViewState>> createAnimationsEpicReduxMws() {
     return [
-      TypedMiddleware<AnimationEpicReduxViewState, UpdateWeatherAction>(handleUpdateWeatherAction),
-      TypedMiddleware<AnimationEpicReduxViewState, LoadForecastAction>(_handleLoadForeCastAction)
+      TypedMiddleware<AnimationEpicReduxViewState, UpdateWeatherAction>(
+          handleUpdateWeatherAction),
+      TypedMiddleware<AnimationEpicReduxViewState, LoadForecastAction>(
+          _handleLoadForeCastAction)
     ];
   }
 
-  _handleLoadForeCastAction(Store<AnimationEpicReduxViewState> store, LoadForecastAction action, NextDispatcher next) {
+  _handleLoadForeCastAction(Store<AnimationEpicReduxViewState> store,
+      LoadForecastAction action, NextDispatcher next) {
     next(LoadingForecast());
     animationsEpicReduxLogic
         .getForecast()
-        .then((weather) => next(WeatherMwForecastPartialState(_convertLogicModelToMw(weather.forecast))))
-        .catchError((error) => next(NoInternetConnection()));
+        .then((weather) => next(WeatherMwForecastPartialState(
+            _convertLogicModelToMw(weather.forecast))))
+        .catchError((error) {
+      print(error);
+      next(NoInternetConnection());
+    });
   }
 
-  handleUpdateWeatherAction(Store<AnimationEpicReduxViewState> store, UpdateWeatherAction action, NextDispatcher next) {
+  handleUpdateWeatherAction(Store<AnimationEpicReduxViewState> store,
+      UpdateWeatherAction action, NextDispatcher next) {
     next(Loading());
     animationsEpicReduxLogic
         .getCurrentWeather()
@@ -41,12 +49,20 @@ class AnimationsEpicReduxMws {
         .catchError((error) => next(NoInternetConnection()));
   }
 
-  Map<DateTime, MwForeCastForDay> _convertLogicModelToMw(Map<DateTime, ForeCastForDay> forecast) {
+  Map<DateTime, MwForeCastForDay> _convertLogicModelToMw(
+      Map<DateTime, ForeCastForDay> forecast) {
     return forecast.map((key, item) => MapEntry(
         key,
         MwForeCastForDay(item.hourlyForecast
-            .map((item) => MwForecastForHour(item.temperature, item.pressuremPa, item.humidityPercentage, item.weatherIcon,
-                item.cloudsPercentage, item.windSpeed, item.windDegree, item.date))
+            .map((item) => MwForecastForHour(
+                item.temperature,
+                item.pressuremPa,
+                item.humidityPercentage,
+                item.weatherIcon,
+                item.cloudsPercentage,
+                item.windSpeed,
+                item.windDegree,
+                item.date))
             .toList())));
   }
 }
@@ -109,6 +125,13 @@ class MwForecastForHour {
   final num windDegree;
   final DateTime date;
 
-  MwForecastForHour(this.temperature, this.pressuremPa, this.humidityPercentage, this.weatherIcon, this.cloudsPercentage,
-      this.windSpeed, this.windDegree, this.date);
+  MwForecastForHour(
+      this.temperature,
+      this.pressuremPa,
+      this.humidityPercentage,
+      this.weatherIcon,
+      this.cloudsPercentage,
+      this.windSpeed,
+      this.windDegree,
+      this.date);
 }
