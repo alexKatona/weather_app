@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:redux/redux.dart';
+import 'package:weather_app/Application.dart';
 import 'package:weather_app/weatherAppRedux/WeatherActions.dart';
 import 'package:weather_app/weatherAppRedux/WeatherLogic.dart';
 import 'package:weather_app/weatherAppRedux/WeatherViewState.dart';
@@ -26,7 +28,7 @@ class AnimationsEpicReduxMws {
         .then((weather) => next(WeatherMwForecastPartialState(
             _convertLogicModelToMw(weather.forecast))))
         .catchError((error) {
-      print(error);
+      appLogger.e("forecastLoad:", error);
       next(NoInternetConnection());
     });
   }
@@ -46,7 +48,7 @@ class AnimationsEpicReduxMws {
             cloudlinessPercentage: weather.cloudlinessPercentage,
             windSpeed: weather.windSpeed,
             windDegree: weather.windDegree)))
-        .catchError((error) => next(NoInternetConnection()));
+        ;
   }
 
   Map<DateTime, MwForeCastForDay> _convertLogicModelToMw(
@@ -79,7 +81,7 @@ class LoadingForecast {}
 @immutable
 class AnimationsEpicReduxMwWeatherUpdatedPartialState {
   final String weatherIcon;
-  final int temperature;
+  final num temperature;
   final bool isDay;
   final num humidity;
   final num pressureHpa;

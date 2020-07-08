@@ -33,12 +33,12 @@ Widget getWeatherBody(AnimationEpicReduxViewState widgetState) {
   }
 }
 
-Widget _createTemperatureWidget(int temperature) {
+Widget _createTemperatureWidget(num temperature) {
   if (temperature == null) {
     return Text("Unknown");
   } else {
     return Padding(
-      child: TextTemperature("$temperature°C"),
+      child: TextTemperature("${temperature.toInt()}°C"),
       padding: EdgeInsets.only(top: 50.0),
     );
   }

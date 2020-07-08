@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 @immutable
 class AnimationEpicReduxViewState {
   final String weatherIcon;
-  final int temperature;
+  final num temperature;
   final bool isLoading;
   final bool isDay;
   final num humidity;
@@ -33,7 +33,7 @@ class AnimationEpicReduxViewState {
 
   AnimationEpicReduxViewState copyWith(
       {String weatherIcon,
-      int temperature,
+      num temperature,
       bool isLoading,
       bool isDay,
       num humidity,

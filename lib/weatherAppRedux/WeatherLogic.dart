@@ -66,7 +66,7 @@ class AnimationsEpicReduxLogic {
 
 class AnimationsEpicReduxLogicWeatherPartialState {
   final String weatherIcon;
-  final int temperature;
+  final num temperature;
   final bool isDay;
   final num humidity;
   final num pressureHpa;

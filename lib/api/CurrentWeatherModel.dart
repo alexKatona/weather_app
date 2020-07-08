@@ -117,11 +117,11 @@ class WeatherModel {
 }
 
 class MainModel {
-  final int temp;
-  final int pressure;
-  final int humidity;
-  final int temp_min;
-  final int temp_max;
+  final num temp;
+  final num pressure;
+  final num humidity;
+  final num temp_min;
+  final num temp_max;
 
   MainModel({this.temp, this.pressure, this.humidity, this.temp_min, this.temp_max});
 
